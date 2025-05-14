@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IQ City - PDF List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <img src="/logo.png" alt="IQ City Logo" class="logo" />
+    <div>
+      <h1>IQ City Medical College</h1>
+      <p class="sub-header">Durgapur, District: Burdwan, West Bengal, Pin 713206</p>
+    </div>
+  </div>
+
+  <h3>Available PDF Documents</h3>
+  <div class="pdf-list" id="pdfList"></div>
+
+  <div class="add-form">
+    <input type="text" id="pdfName" placeholder="Enter PDF Name" />
+    <input type="url" id="pdfUrl" placeholder="Enter PDF URL (Must be public)" />
+    <button onclick="addPDF()">➕ Add PDF</button>
+  </div>
+
+  <script>
+    const defaultPDFs = [
+      { name: "Admission Instructions", url: "https://cms.nursing.iqcity.in/wp-content/uploads/2025/04/Admission-Instructions-for-2025-26-Year.pdf" },
+      { name: "New Admission Circular", url: "https://cms.nursing.iqcity.in/wp-content/uploads/2025/04/Circular-for-New-Admission-1.pdf" },
+      { name: "Cancer Webinar", url: "https://cms.nursing.iqcity.in/wp-content/uploads/2025/04/Cancer-Webiner_Final-1.pdf" },
+    ];
+
+    const storedPDFs = JSON.parse(localStorage.getItem("pdfLinks") || "[]");
+    const pdfs = [...defaultPDFs, ...storedPDFs];
+
+    function renderPDFList() {
+      const list = document.getElementById("pdfList");
+      list.innerHTML = "";
+      pdfs.forEach((pdf, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = pdf.name;
+        btn.onclick = () => {
+          const encoded = encodeURIComponent(pdf.url);
+          const title = encodeURIComponent(pdf.name);
+          window.location.href = `viewer.html?pdf=${encoded}&title=${title}`;
+        };
+        list.appendChild(btn);
+      });
+    }
+
+    function addPDF() {
+      const name = document.getElementById("pdfName").value.trim();
+      const url = document.getElementById("pdfUrl").value.trim();
+
+      if (!name || !url || !url.endsWith(".pdf")) {
+        alert("Please enter a valid PDF name and link ending with .pdf");
+        return;
+      }
+
+      storedPDFs.push({ name, url });
+      localStorage.setItem("pdfLinks", JSON.stringify(storedPDFs));
+      pdfs.push({ name, url });
+      renderPDFList();
+      document.getElementById("pdfName").value = "";
+      document.getElementById("pdfUrl").value = "";
+    }
+
+    renderPDFList();
+  </script>
+</body>
+</html>

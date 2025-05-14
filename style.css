@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: white;
   }
   
   .header {
@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: white;
-    padding: 20px;
+    padding-top: 20px;
     flex-wrap: wrap;
     gap: 20px;
     text-align: left;
@@ -66,30 +66,29 @@ body {
     background-color: #218838;
   }
   
-  
   .viewer-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 15px;
-    height: 100vh;
+    padding: 80px 15px;
+    height: 80vh;
     box-sizing: border-box;
+    justify-content: space-between;
   }
   
   .pdf-title {
     font-size: 20px;
     font-weight: bold;
     color: #28a745;
-    margin-bottom: 10px;
+    margin: 10px;
     text-align: center;
   }
   
   .pdf-viewer-container {
     border: 4px solid #28a745;
     width: 100%;
-    max-width: 900px;
-    height: calc(100vh - 200px); /* Leaves space for title and buttons */
-    box-sizing: border-box;
+    max-width: 800px;
+    height: 90vh; /* smaller height to accommodate buttons */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -97,13 +96,14 @@ body {
   }
   
   .pdf-viewer-container iframe {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     border: none;
   }
   
-  .download-btn, .back-btn {
-    margin-top: 10px;
+  .download-btn{
+    justify-items: end;
+    margin-top: 5px;
   }
   
   .download-btn button {
@@ -122,33 +122,23 @@ body {
     background: linear-gradient(to right, #f26522, #e94e1b);
   }
 
-  .back-btn {
-    margin-top: 18px;
-  }
 
-  .back-btn button {
-    padding: 8px 20px;
-    font-size: 14px;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .back-btn button:hover {
-    background-color: #5a6268;
-  }
 
   @media screen and (max-width: 600px) {
     .header {
+      padding: 10px;
+      height: auto;
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
     }
-
+    .logo{
+        height: 40px;
+        width: auto;
+    }
     .header h1, .sub-header {
       margin-left: 0;
+      font-size: small;
     }
 
     .pdf-title {
@@ -160,7 +150,7 @@ body {
     }
     .viewer-wrapper {
         padding: 10px;
-        height: 100vh;
+        height: 80vh;
       }
     
       .pdf-viewer-container {

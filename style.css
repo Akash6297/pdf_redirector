@@ -7,26 +7,43 @@ body {
   }
   
   .header {
-
+    display: flex;
     align-items: center;
+    justify-content: center;
     background-color: white;
     padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+  }
+  
+  .logo-link {
+    display: inline-block;
+  }
+  
+  .logo {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+  }
+  
+  .college-info {
+    max-width: 600px;
   }
   
   .header h1 {
     color: green;
     margin: 0;
+    font-size: 24px;
   }
-
-  .logo {
-    display: flex;
-    align-items: center;
-  }  
   
   .sub-header {
-    margin: 5px 0 20px;
+    margin: 5px 0 0;
     color: #333;
+    font-size: 16px;
   }
+  
   
   .pdf-list, .pdf-buttons {
     display: flex;
@@ -52,12 +69,13 @@ body {
   
   .viewer-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    padding: 10px 15px;
+    height: 100vh;
+    box-sizing: border-box;
   }
-
+  
   .pdf-title {
     font-size: 20px;
     font-weight: bold;
@@ -65,30 +83,29 @@ body {
     margin-bottom: 10px;
     text-align: center;
   }
-
+  
   .pdf-viewer-container {
-    border: 5px solid #28a745;
-    width: 90%;
+    border: 4px solid #28a745;
+    width: 100%;
     max-width: 900px;
-    height: 80vh;
+    height: calc(100vh - 200px); /* Leaves space for title and buttons */
     box-sizing: border-box;
-    margin: 20px auto 10px auto;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     overflow: hidden;
     background-color: white;
   }
-
+  
   .pdf-viewer-container iframe {
     width: 100%;
     height: 100%;
     border: none;
   }
-
-  .download-btn {
-    margin-top: 15px;
+  
+  .download-btn, .back-btn {
+    margin-top: 10px;
   }
-
+  
   .download-btn button {
     padding: 10px 22px;
     font-size: 15px;
@@ -141,4 +158,22 @@ body {
     .pdf-viewer-container {
       height: 70vh;
     }
+    .viewer-wrapper {
+        padding: 10px;
+        height: 100vh;
+      }
+    
+      .pdf-viewer-container {
+        height: calc(100vh - 190px); /* Slightly more space for smaller devices */
+      }
+    
+      .pdf-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+    
+      .download-btn button, .back-btn button {
+        width: 90%;
+        font-size: 14px;
+      }
   }

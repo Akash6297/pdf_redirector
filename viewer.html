@@ -17,14 +17,14 @@
   </div>
 
   <div class="viewer-wrapper">
-    <div class="pdf-title" id="pdfTitle">Loading...</div>
+    <div class="pdf-title" id="pdfTitle">Loading title...</div>
 
     <div class="pdf-viewer-container">
-      <embed id="pdfEmbed" type="application/pdf" width="100%" height="600px" />
+      <iframe id="pdfFrame" src="" width="100%" height="600px" style="border: none;"></iframe>
     </div>
 
     <div class="download-btn">
-      <a id="downloadLink" target="_blank" download>
+      <a id="downloadLink" target="_blank">
         <button>📥 Download PDF</button>
       </a>
     </div>
@@ -42,12 +42,13 @@
     const pdfTitle = decodeURIComponent(urlParams.get('title') || "PDF Viewer");
 
     if (pdfUrl) {
-      document.getElementById("pdfEmbed").src = pdfUrl;
+      document.getElementById("pdfFrame").src = pdfUrl;
       document.getElementById("downloadLink").href = pdfUrl;
       document.getElementById("pdfTitle").textContent = pdfTitle;
     } else {
       document.getElementById("pdfTitle").textContent = "PDF URL not found.";
     }
   </script>
+
 </body>
 </html>

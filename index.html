@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IQ City - PDF List</title>
   <link rel="stylesheet" href="style.css" />
-
   <style>
     .form-wrapper {
       margin-top: 30px;
@@ -36,14 +35,16 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="/logo.png" alt="IQ City Logo" class="logo" />
-    <div>
-      <h1>IQ City Medical College</h1>
-      <p class="sub-header">Durgapur, District: Burdwan, West Bengal, Pin 713206</p>
-    </div>
-  </div>
-
+    <div class="header">
+        <a href="index.html" class="logo-link">
+          <img src="/logo.png" alt="IQ City Logo" class="logo" />
+        </a>
+        <div class="college-info">
+          <h1>IQ City Medical College</h1>
+          <p class="sub-header">Durgapur, District: Burdwan, West Bengal, Pin 713206</p>
+        </div>
+      </div>      
+      
   <h3>Available PDF Documents</h3>
   <div class="pdf-list" id="pdfList">
     <button onclick="openPDF(0)">Admission Instructions</button>
